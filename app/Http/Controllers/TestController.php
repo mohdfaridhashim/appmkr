@@ -24,10 +24,13 @@ class TestController extends Controller
                 'version' => 'wc/v1',
             ]
         );
+        $result = $woocommerce->get('customers');
+
+        $lastResponse = $woocommerce->http->getResponse();
 
         return response()->json([
-            'status'=>'200',
-            'content'=>$woocommerce->get('customers'),
+            'status'=>$lastResponse->getCode(),
+            'content'=>$result,
         ]);
     }
 

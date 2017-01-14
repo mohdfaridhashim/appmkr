@@ -25,7 +25,10 @@ class TestController extends Controller
             ]
         );
 
-        return $results = $woocommerce->get('customers');
+        return response()->json([
+            'status'=>'200',
+            'content'=>$woocommerce->get('customers'),
+        ]);
     }
 
     /**
